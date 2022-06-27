@@ -1325,45 +1325,45 @@ p._applyLayerZDepth = function(parent)
 		layerObj.transformMatrix = matToApply;
 	}
 }
-an.makeResponsive = function(isResp, respDim, isScale, scaleType, domContainers) {
-	var lastW, lastH, lastS=1;
-	window.addEventListener('resize', resizeCanvas);
-	resizeCanvas();
-	function resizeCanvas() {
-		var w = lib.properties.width, h = lib.properties.height;
-		var iw = window.innerWidth, ih=window.innerHeight;
-		var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;
-		if(isResp) {
-			if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {
-				sRatio = lastS;
-			}
-			else if(!isScale) {
-				if(iw<w || ih<h)
-					sRatio = Math.min(xRatio, yRatio);
-			}
-			else if(scaleType==1) {
-				sRatio = Math.min(xRatio, yRatio);
-			}
-			else if(scaleType==2) {
-				sRatio = Math.max(xRatio, yRatio);
-			}
+an.makeResponsive = function(isResp, respDim, isScale, scaleType, domContainers) {		
+	var lastW, lastH, lastS=1;		
+	window.addEventListener('resize', resizeCanvas);		
+	resizeCanvas();		
+	function resizeCanvas() {			
+		var w = lib.properties.width, h = lib.properties.height;			
+		var iw = window.innerWidth, ih=window.innerHeight;			
+		var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
+		if(isResp) {                
+			if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
+				sRatio = lastS;                
+			}				
+			else if(!isScale) {					
+				if(iw<w || ih<h)						
+					sRatio = Math.min(xRatio, yRatio);				
+			}				
+			else if(scaleType==1) {					
+				sRatio = Math.min(xRatio, yRatio);				
+			}				
+			else if(scaleType==2) {					
+				sRatio = Math.max(xRatio, yRatio);				
+			}			
 		}
-		domContainers[0].width = w * pRatio * sRatio;
+		domContainers[0].width = w * pRatio * sRatio;			
 		domContainers[0].height = h * pRatio * sRatio;
-		domContainers.forEach(function(container) {
-			container.style.width = w * sRatio + 'px';
-			container.style.height = h * sRatio + 'px';
+		domContainers.forEach(function(container) {				
+			container.style.width = w * sRatio + 'px';				
+			container.style.height = h * sRatio + 'px';			
 		});
-		stage.scaleX = pRatio*sRatio;
+		stage.scaleX = pRatio*sRatio;			
 		stage.scaleY = pRatio*sRatio;
-		lastW = iw; lastH = ih; lastS = sRatio;
-		stage.tickOnUpdate = false;
-		stage.update();
-		stage.tickOnUpdate = true;
+		lastW = iw; lastH = ih; lastS = sRatio;            
+		stage.tickOnUpdate = false;            
+		stage.update();            
+		stage.tickOnUpdate = true;		
 	}
 }
 
-// Virtual camera API :
+// Virtual camera API : 
 
 an.VirtualCamera = new function() {
 var _camera = new Object();
@@ -1428,7 +1428,7 @@ VC.prototype.setPosition = function(x, y, z) {
 	var cosTheta = Math.cos(rotAngle);
 	var offX= x*cosTheta + y*sinTheta;
 	var offY = y*cosTheta - x*sinTheta;
-
+	
 	this.camAxisX = this.centerX - x;
 	this.camAxisY = this.centerY - y;
 	this.camera.x = this.centerX - offX;
@@ -1565,7 +1565,7 @@ this.getCameraAsMovieClip = function(timeline) {
 }
 
 
-// Layer depth API :
+// Layer depth API : 
 
 an.Layer = new function() {
 	this.getLayerZDepth = function(timeline, layerName)
