@@ -1171,10 +1171,10 @@ lib.properties = {
 	width: 549,
 	height: 863,
 	fps: 24,
-	color: "#000000",
+	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/Harlem_Apt_atlas_1.png?1656009806028", id:"Harlem_Apt_atlas_1"}
+		{src:"images/Harlem_Apt_atlas_1.png?1656344384088", id:"Harlem_Apt_atlas_1"}
 	],
 	preloads: []
 };
